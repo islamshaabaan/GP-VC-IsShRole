@@ -1,0 +1,13 @@
+
+footprint: [[-0.175, 0.175], [0.175, 0.175],  [0.175, -0.175],[-0.175,-0.175]]
+#robot_radius: ir_of_robot
+
+#cost_scaling_factor: 2.0
+publish_frequency: 0.5
+track_unknown_space: true #solution of inf in lidar
+observation_sources: laser_scan_sensor 
+transform_tolerance: 1.5 #nano is slow , default: 0.3
+
+laser_scan_sensor: {sensor_frame: laser_frame, data_type: LaserScan, topic: /robomaid/laser/scan, marking: true, clearing: true , inf_is_valid: true }
+
+

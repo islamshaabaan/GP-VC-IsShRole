@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+
+  
+	
+
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+	<remap from="cmd_vel" to="/RoboMaid_diff_drive_controller/cmd_vel"/>
+    <rosparam file="$(find robomaid_2dnav)/config/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+    <rosparam file="$(find robomaid_2dnav)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+
+    <rosparam file="$(find robomaid_2dnav)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find robomaid_2dnav)/config/global_costmap_params.yaml" command="load" /> 
+   <!-- <rosparam file="$(find robomaid_2dnav)/config/base_local_planner_params.yaml" command="load" />-->
+<rosparam file="$(find robomaid_2dnav)/config/move_base.yaml" command="load" />
+
+ </node>
+
+ 
+
+</launch> 

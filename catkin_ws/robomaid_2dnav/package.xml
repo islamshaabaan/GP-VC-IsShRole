@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<package>
+  <name>robomaid_2dnav</name>
+  <version>0.0.0</version>
+  <description>The robomaid_2dnav package</description>
+ 
+  <author email="islam.a10043@yahoo.com">Islam Ahmed</author>
+
+  <maintainer email="islam.a10043@yahoo.com">Islam Ahmed</maintainer>
+
+  
+<license>no-license</license>
+ 
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>rosbag</build_depend>
+  <build_depend>move_base_msgs</build_depend>
+  <build_depend>actionlib</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>costmap_2d</build_depend>
+  <build_depend>carrot_planner</build_depend>
+  <run_depend>costmap_2d</run_depend>
+ <run_depend> carrot_planner</run_depend> 
+  <run_depend>rosbag</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>move_base_msgs</run_depend>
+  <run_depend>actionlib</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>amcl</run_depend>
+  <run_depend>gazebo_ros</run_depend>
+  <run_depend>xacro</run_depend>
+  <run_depend>move_base</run_depend>
+  <run_depend>map_server</run_depend>
+  <run_depend>joint_state_publisher</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>rviz</run_depend>
+ 
+</package>

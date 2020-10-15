@@ -1,0 +1,23 @@
+
+
+
+
+costmap_topic: "/map" 
+
+#"move_base/global_costmap/costmap" 
+#costmap_updates_topic: "move_base/global_costmap/costmap_updates"
+
+
+
+visualize: true 
+
+planner_frequency: 0.1 #(double, default: 1.0)
+
+    
+
+progress_timeout: 30.0
+
+
+
+
+min_frontier_size: 0.75  #0.5 for global cost map

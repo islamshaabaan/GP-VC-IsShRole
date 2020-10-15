@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<launch>
+<arg name="gazebo_gui" default="true"/>
+<arg name="world"    default="$(find RoboMaid_sim)/Worlds/newworrld2.world"/>
+
+
+
+<include file="$(find RoboMaid_sim)/launch/gazebo.launch">
+	<arg name="gazebo_gui" value="$(arg gazebo_gui)"/>
+     <arg name="world"    value="$ (arg world)"/>
+	
+</include>
+
+
+<include file="$(find rf2o_laser_odometry)/launch/rf2o_laser_odometry.launch"/>
+<include file="$(find hector_mapping)/launch/mapping_default.launch" >
+
+
+<arg name="base_frame" value="base_link"/>
+<arg name="odom_frame" value="odom"/>
+<arg name="scan_topic" value="/robomaid/laser/scan"/>
+<arg name="map_size" default="250"/>
+<arg name="pub_map_odom_transform" value="true"/>
+</include>
+<!--<include file="$(find roomba_nev)/launch/move_base.launch"/>-->
+<!--<include file="$(find explore_lite)/launch/explore.launch"/>-->
+</launch> 
+

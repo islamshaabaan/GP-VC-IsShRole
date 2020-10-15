@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<robot name="RoboMaid" xmlns:xacro="http://ros.org/wiki/xacro">
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+
+	<!-- Robot-model-->
+
+  <link name="base_link" >
+    <visual>
+      <geometry>
+        <box size="0.35 0.35 0.005"/>
+      </geometry>
+	<material name="white"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.35 0.35 0.005"/>
+      </geometry>
+    </collision>
+     <inertial>
+	<mass value="2"/>
+	<inertia ixx="0.0204" ixy="0.0" ixz="0.0" iyy="0.0408" iyz="0.0" izz="0.0204"/>
+     </inertial>
+  </link>
+
+  <link name="right_wheel_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.035" radius="0.03"/>
+      </geometry>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+	<material name="black"/>
+    </visual>
+    <collision>
+	<geometry>
+        <cylinder length="0.035" radius="0.03"/>
+      </geometry>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+    </collision>
+     <inertial>
+	<mass value="0.2"/>
+	<inertia ixx="0.0000542" ixy="0.0" ixz="0.0" iyy="0.0000542" iyz="0.0" izz="0.00009"/>
+     </inertial>
+    
+  </link>
+  <link name="left_wheel_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.035" radius="0.03"/>
+      </geometry>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+	<material name="black"/>
+    </visual>
+      <collision>
+       <geometry>
+        <cylinder length="0.035" radius="0.03"/>
+      </geometry>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+    </collision>
+     <inertial>
+	<mass value="0.2"/>
+	<inertia ixx="0.0000542" ixy="0.0" ixz="0.0" iyy="0.0000542" iyz="0.0" izz="0.00009"/>
+     </inertial>
+  </link>
+
+  <link name="front_roller">
+    <visual>
+      <geometry>
+        <sphere  radius="0.025"/>
+      </geometry>
+      <origin  xyz="0 0 -0.025"/>
+	<material name="black"/>
+    </visual>
+     <collision>
+	<geometry>
+        <sphere  radius="0.025"/>
+      </geometry>
+      <origin  xyz="0 0 -0.025"/>
+     </collision>
+     <inertial>
+	<mass value="0.6"/>
+	<inertia ixx="0.00003" ixy="0.0" ixz="0.0" iyy="0.00003" iyz="0.0" izz="0.00003"/>
+     </inertial>
+     
+  </link>
+
+ <!-- <link name="back_roller">
+    <visual>
+      <geometry>
+        <sphere  radius="0.025"/>
+      </geometry>
+      <origin  xyz="0 0 -0.025"/>
+	<material name="black"/>
+    </visual>
+     <collision>
+      <geometry>
+        <sphere  radius="0.025"/>
+      </geometry>
+      <origin  xyz="0 0 -0.025"/>
+     </collision>
+      <inertial>
+	<mass value="0.12"/>
+	<inertia ixx="0.00003" ixy="0.0" ixz="0.0" iyy="0.00003" iyz="0.0" izz="0.00003"/>
+     </inertial>
+  </link> -->
+<link
+    name="base_laser">
+    <inertial>
+      <origin
+        xyz="-0.00029774 0.0066667 0.00513047"
+        rpy="0 0 0" />
+      <mass
+        value="0.15717" />
+      <inertia
+        ixx="6.7885E-05"
+        ixy="-1.3987E-07"
+        ixz="-8.1554E-07"
+        iyy="0.00013173"
+        iyz="-9.0932E-08"
+        izz="7.1972E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.005"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RoboMaid_sim/meshes/ydlidar.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 1 0.5" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+filename="package://RoboMaid_sim/meshes/ydlidar.dae" />
+      </geometry>
+    </collision>
+  </link>
+<link
+    name="laser_frame">
+    <inertial>
+      <origin
+        xyz="-0.00036659 0.00064155 -0.00027052"
+        rpy="0 0 0" />
+      <mass
+        value="0.25482" />
+      <inertia
+        ixx="8.9194E-05"
+        ixy="1.8116E-07"
+        ixz="3.6435E-08"
+        iyy="0.00018279"
+        iyz="2.423E-07"
+        izz="0.00011103" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ydlidar_ros/meshes/ydlidar.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ydlidar_ros/meshes/ydlidar.dae" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="base_to_right_wheel" type="continuous">
+	<parent link="base_link"/>
+	<child link="right_wheel_link"/>
+        <axis xyz="0 1 0"/>
+	<origin xyz="0 0.135 -0.02"/>
+  </joint>
+
+  <joint name="base_to_left_wheel" type="continuous">
+	<parent link="base_link"/>
+	<child link="left_wheel_link"/>
+	<axis xyz="0 1 0"/>
+	<origin xyz="0 -0.135 -0.02"/>
+  </joint>
+
+
+  <joint name="base_to_front_roller" type="fixed">
+	<parent link="base_link"/>
+	<child link="front_roller"/>
+	<origin xyz="-0.14 0 0"/>
+  </joint>
+
+  <!--<joint name="base_to_back_roller" type="fixed">
+	<parent link="base_link"/>
+	<child link="back_roller"/>
+	<origin xyz="0.14 0 0"/>
+  </joint>   -->
+
+  <joint
+    name="laser_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0.03172"
+      rpy="0 0 0" />
+    <parent
+      link="base_laser" />
+    <child
+      link="laser_frame" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <joint name="base_to_lidar" type="fixed">
+	<parent link="base_link"/>
+	<child link="base_laser"/>
+	<axis xyz="0 0 1"/>
+	<origin xyz="0 0 0"/>
+  </joint>
+
+
+
+	<!-- adding transmitions for wheels to control their velocity from gazebo -->
+<xacro:macro name="wheel-trans" params="wheel_type">
+
+    <gazebo reference="${wheel_type}_wheel">
+      <mu1 value="200.0"/>
+      <mu2 value="100.0"/>
+      <kp value="10000000.0" />
+      <kd value="1.0" />
+      <material>Gazebo/Black</material>
+    </gazebo>
+
+    <!-- This block connects the wheel joint to an actuator (motor), which informs both
+    simulation and visualization of the robot -->
+    <transmission name="${wheel_type}_wheel_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="${wheel_type}_wheel_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="base_to_${wheel_type}_wheel">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+
+ </xacro:macro>
+
+<xacro:macro name="wheel-speed-read" params="wheel_type">
+
+    <transmission name="${wheel_type}_wheel_reading">
+      <type>transmission_interface/SimpleTransmission</type>
+
+    <joint name="base_to_${wheel_type}_wheel">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    </transmission>
+
+ </xacro:macro>
+ <xacro:wheel-trans wheel_type="left"/>
+ <xacro:wheel-trans wheel_type="right"/>
+<xacro:wheel-speed-read wheel_type="left"/>
+<xacro:wheel-speed-read wheel_type="right"/>
+	<!--Gazebo plugin for lidar -->
+  <gazebo reference="laser_frame">
+    <sensor type="ray" name="ydlidar_X4_sensor">
+      <pose>0 0 0.0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>5000</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159265359</min_angle>
+            <max_angle>3.14159265359</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.12</min>
+          <max>12.0</max>
+          <resolution>0.5</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_ydlidarx4_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/robomaid/laser/scan</topicName>
+        <frameName>laser_frame</frameName>
+      </plugin>
+    </sensor >
+  </gazebo>
+	<!--making ros interact with gazebo-->
+  <gazebo>
+       <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+          <robotNamespace>/</robotNamespace>
+      </plugin>
+  </gazebo>
+</robot>

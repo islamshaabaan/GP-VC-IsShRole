@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+<robot name="RoboMaid" xmlns:xacro="http://ros.org/wiki/xacro">
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+
+	<!-- Robot-model-->
+
+  <link name="base_link" >
+    <visual>
+      <geometry>
+        <box size="0.35 0.35 0.005"/>
+      </geometry>
+	<material name="white"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.35 0.35 0.005"/>
+      </geometry>
+    </collision>
+     <inertial>
+	<mass value="2"/>
+	<inertia ixx="0.0204" ixy="0.0" ixz="0.0" iyy="0.0408" iyz="0.0" izz="0.0204"/>
+     </inertial>
+  </link>
+
+  <link name="right_wheel_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.035" radius="0.03"/>
+      </geometry>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+	<material name="black"/>
+    </visual>
+    <collision>
+	<geometry>
+        <cylinder length="0.035" radius="0.03"/>
+      </geometry>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+    </collision>
+     <inertial>
+	<mass value="0.2"/>
+	<inertia ixx="0.0000542" ixy="0.0" ixz="0.0" iyy="0.0000542" iyz="0.0" izz="0.00009"/>
+     </inertial>
+    
+  </link>
+  <link name="left_wheel_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.035" radius="0.03"/>
+      </geometry>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+	<material name="black"/>
+    </visual>
+      <collision>
+       <geometry>
+        <cylinder length="0.035" radius="0.03"/>
+      </geometry>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+    </collision>
+     <inertial>
+	<mass value="0.2"/>
+	<inertia ixx="0.0000542" ixy="0.0" ixz="0.0" iyy="0.0000542" iyz="0.0" izz="0.00009"/>
+     </inertial>
+  </link>
+
+  <link name="front_roller">
+    <visual>
+      <geometry>
+        <sphere  radius="0.025"/>
+      </geometry>
+      <origin  xyz="0 0 -0.025"/>
+	<material name="black"/>
+    </visual>
+     <collision>
+	<geometry>
+        <sphere  radius="0.025"/>
+      </geometry>
+      <origin  xyz="0 0 -0.025"/>
+     </collision>
+     <inertial>
+	<mass value="0.6"/> 
+	<inertia ixx="0.00003" ixy="0.0" ixz="0.0" iyy="0.00003" iyz="0.0" izz="0.00003"/>
+     </inertial>
+     
+  </link>
+
+  <!--<link name="back_roller">
+    <visual>
+      <geometry>
+        <sphere  radius="0.025"/>
+      </geometry>
+      <origin  xyz="0 0 -0.025"/>
+	<material name="black"/>
+    </visual>
+     <collision>
+      <geometry>
+        <sphere  radius="0.025"/>
+      </geometry>
+      <origin  xyz="0 0 -0.025"/>
+     </collision>
+      <inertial>
+	<mass value="0.12"/>
+	<inertia ixx="0.00003" ixy="0.0" ixz="0.0" iyy="0.00003" iyz="0.0" izz="0.00003"/>
+     </inertial>
+  </link> -->
+<link
+    name="base_laser">
+    <inertial>
+      <origin
+        xyz="-0.00029774 0.0066667 0.00513047"
+        rpy="0 0 0" />
+      <mass
+        value="0.15717" />
+      <inertia
+        ixx="6.7885E-05"
+        ixy="-1.3987E-07"
+        ixz="-8.1554E-07"
+        iyy="0.00013173"
+        iyz="-9.0932E-08"
+        izz="7.1972E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.005"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RoboMaid_sim/meshes/ydlidar.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 1 0.5" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+filename="package://RoboMaid_sim/meshes/ydlidar.dae" />
+      </geometry>
+    </collision>
+  </link>
+<link
+    name="laser_frame">
+    <inertial>
+      <origin
+        xyz="-0.00036659 0.00064155 -0.00027052"
+        rpy="0 0 0" />
+      <mass
+        value="0.25482" />
+      <inertia
+        ixx="8.9194E-05"
+        ixy="1.8116E-07"
+        ixz="3.6435E-08"
+        iyy="0.00018279"
+        iyz="2.423E-07"
+        izz="0.00011103" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ydlidar_ros/meshes/ydlidar.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ydlidar_ros/meshes/ydlidar.dae" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="base_to_right_wheel" type="continuous">
+	<parent link="base_link"/>
+	<child link="right_wheel_link"/>
+        <axis xyz="0 1 0"/>
+	<origin xyz="0 0.135 -0.02"/>
+  </joint>
+
+  <joint name="base_to_left_wheel" type="continuous">
+	<parent link="base_link"/>
+	<child link="left_wheel_link"/>
+	<axis xyz="0 1 0"/>
+	<origin xyz="0 -0.135 -0.02"/>
+  </joint>
+
+
+  <joint name="base_to_front_roller" type="fixed">
+	<parent link="base_link"/>
+	<child link="front_roller"/>
+	<origin xyz="-0.14 0 0"/>
+  </joint>
+
+ <!-- <joint name="base_to_back_roller" type="fixed">
+	<parent link="base_link"/>
+	<child link="back_roller"/>
+	<origin xyz="0.14 0 0"/>
+  </joint>   -->
+
+  <joint
+    name="laser_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0.03172"
+      rpy="0 0 0" />
+    <parent
+      link="base_laser" />
+    <child
+      link="laser_frame" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <joint name="base_to_lidar" type="fixed">
+	<parent link="base_link"/>
+	<child link="base_laser"/>
+	<axis xyz="0 0 1"/>
+	<origin xyz="0 0 0"/>
+  </joint>
+</robot>

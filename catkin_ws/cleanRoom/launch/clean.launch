@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+  
+<arg name="map_path" default= "/" />
+
+		
+ <master auto="start"/>
+
+
+   
+<node name="cleanRoom" pkg="cleanRoom" type="cleanRoom" output="screen" args= "$(arg map_path)">
+		
+	</node>
+
+</launch>
